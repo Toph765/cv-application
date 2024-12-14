@@ -21,4 +21,4 @@ function GenInfo() {
   )
 }
 
-export default GenInfo
+export default GenInfo;
