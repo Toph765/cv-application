@@ -1,21 +1,34 @@
-function GenInfo() {
+import { useState } from "react";
+
+function GenInfo({ callback }) {
+    const [genInfo, setgenInfo] = useState({
+        name: '',
+        email: '',
+        phone: ''
+    });
+
+    const grabData = (e) => {
+        e.preventDefault();
+        callback(genInfo);
+    }
+
   return (
       <>
           <form>
             <div>
                 <label htmlFor="name">Name:</label>
-                <input id="name" type="text" />
+                  <input id="name" type="text" onChange={e => setgenInfo({ ...genInfo, name: e.target.value })} />
             </div>
             <div>
                 <label htmlFor="email">E-mail:</label>
-                <input id="email" type="email" />
+                <input id="email" type="email"  onChange={e => setgenInfo({...genInfo, email: e.target.value})}/>
             </div>
             <div>
                 <label htmlFor="phone">Phone number:</label>
-                <input id="phone" type="telephone" />
+                <input id="phone" type="telephone"  onChange={e => setgenInfo({...genInfo, phone: e.target.value})}/>
             </div>
             <button>Edit</button>
-            <button>Submit</button>  
+            <button onClick={grabData}>Submit</button>  
           </form>
       </>
   )
