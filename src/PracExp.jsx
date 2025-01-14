@@ -41,10 +41,11 @@ function Resp() {
         return (
           <div key={duty.id}>
             <div>
-            <label htmlFor="responsibilities"></label>
+            <label>
               <input type="text" name="responsibilities"
-                value={duty[resp]}
+                value={duty.responsibilities}
                 onChange={e => handleInputChange(e, duty.id)} />
+            </label>
               {resp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, duty.id)}>x</button>)}
               
             </div>
@@ -59,7 +60,7 @@ function Resp() {
 function PracExp({callback}) {
   const [pracExp, setPracExp] = useState([{
     id: 1,
-    companyName: 'a',
+    companyName: '',
     position: '',
     from: '',
     to: '',
@@ -71,9 +72,9 @@ function PracExp({callback}) {
   }
 
   const handleChange = (e, dataId) => {
-    const {id, value} = e.target
-    const list = [...pracExp]
-    list.filter(exp => exp.id === dataId)[0][id] = value;
+    const { name, value } = e.target;
+    const list = [...pracExp];
+    list.filter(exp => exp.id === dataId)[0][name] = value;
     setPracExp(list);
   }
 
@@ -89,6 +90,16 @@ function PracExp({callback}) {
     setPracExp(newList);
   }
 
+  const handleRemoveBtn = (e, id) => {
+    e.preventDefault();
+    const list = [...pracExp];
+    const index = list.findIndex((item) => {
+      return item.id === id;
+    })
+    list.splice(index, 1);
+    setPracExp(list);
+  }
+
     return (
       <>
         <form>
@@ -96,20 +107,25 @@ function PracExp({callback}) {
             return (
               <div key={exp.id}>
                 <div>
-                <label htmlFor="companyName">Company name:</label>
-                <input id="companyName" type="text" onChange={(e) => handleChange(e, exp.id)} />
+                  <label>
+                    Company name:
+                    <input name="companyName" type="text" onChange={(e) => handleChange(e, exp.id)} />
+                  </label>
                 </div>
                 <div>
-                <label htmlFor="position">Position title:</label>        
-                <input id="position" type="text" onChange={(e) => handleChange(e, exp.id)} />      
+                  <label>
+                  Position title:
+                  <input name="position" type="text" onChange={(e) => handleChange(e, exp.id)} />     
+                  </label>    
                 </div>
                 <div>
                 <input type="date" onChange={(e) => handleChange(e, exp.id)} />     
-                  <input type="date" onChange={(e) => handleChange(e, exp.id)} />      
+                <input type="date" onChange={(e) => handleChange(e, exp.id)} />      
                 </div>
                 <Resp />
                 <button>edit</button>    
                 <button onClick={grabData} type="submit">submit</button>
+                {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
               </div>
             )
           })}
