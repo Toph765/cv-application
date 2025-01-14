@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 function EdExp({callback}) {
-  const [edExp, setEdExp] = useState({
+  const [edExp, setEdExp] = useState([{
+    id: 0,
     schoolName: '',
     program: '',
     graduation: ''
-  })
+  }])
 
   const grabData = (e) => {
     e.preventDefault();
@@ -15,20 +16,34 @@ function EdExp({callback}) {
   return (
     <>
       <form>
-        <div>
-          <label htmlFor="schoolName">School name:</label>
-          <input id="schoolName" type="text" onChange={(e) => setEdExp({...edExp, schoolName: e.target.value})} />        
-        </div>
-        <div>
-          <label htmlFor="program">Program:</label>
-          <input id="program" type="text" onChange={(e) => setEdExp({...edExp, program: e.target.value})} />        
-        </div>
-        <div>
-          <label htmlFor="graduation">Date graduated:</label>
-          <input id="gradutaion" type="date" onChange={(e) => setEdExp({...edExp, graduation: e.target.value})} />        
-        </div>
-        <button>edit</button>      
-        <button onClick={grabData}>submit</button>      
+        {edExp.map((exp) => {
+          return (
+          <div key={exp.id}>
+            <div>
+                <label>
+                  School name:
+              <input name="schoolName" type="text" onChange={(e) => setEdExp({...edExp, schoolName: e.target.value})} />        
+              </label>
+              </div>
+            
+            <div>
+              <label>
+                Program:
+                <input id="program" type="text" onChange={(e) => setEdExp({...edExp, program: e.target.value})} />        
+              </label>
+            </div>
+            <div>
+              <label>
+                Date graduated:
+                <input id="gradutaion" type="date" onChange={(e) => setEdExp({...edExp, graduation: e.target.value})} />        
+              </label>
+              </div>
+            <button>edit</button>      
+            <button onClick={grabData}>submit</button>      
+          </div>
+          )
+        })}
+        <button>add</button>
       </form> 
     </>
   )
