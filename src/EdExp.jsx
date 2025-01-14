@@ -13,6 +13,13 @@ function EdExp({callback}) {
     callback(edExp);
   }
 
+  const handleInputChange = (e, id) => {
+    const { name, value } = e.target;
+    const list = [...edExp];
+    list.filter((item) => item.id === id)[0][name] = value;
+    setEdExp(list);
+  }
+
   return (
     <>
       <form>
@@ -22,14 +29,14 @@ function EdExp({callback}) {
             <div>
                 <label>
                   School name:
-              <input name="schoolName" type="text" onChange={(e) => setEdExp({...edExp, schoolName: e.target.value})} />        
+              <input name="schoolName" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
               </label>
               </div>
             
             <div>
               <label>
                 Program:
-                <input id="program" type="text" onChange={(e) => setEdExp({...edExp, program: e.target.value})} />        
+                <input id="program" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
               </label>
             </div>
             <div>
