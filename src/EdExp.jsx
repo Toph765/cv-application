@@ -20,6 +20,17 @@ function EdExp({callback}) {
     setEdExp(list);
   }
 
+  const handleAddbtn = (e) => {
+    e.preventDefault();
+    const newList = [...edExp, {
+      id: edExp[edExp.length - 1].id + 1,
+      schoolName: '',
+      program: '',
+      graduation: '',
+    }];
+    setEdExp(newList);
+  }
+
   return (
     <>
       <form>
@@ -36,13 +47,13 @@ function EdExp({callback}) {
             <div>
               <label>
                 Program:
-                <input id="program" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
+                <input name="program" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
               </label>
             </div>
             <div>
               <label>
                 Date graduated:
-                <input id="gradutaion" type="date" onChange={(e) => setEdExp({...edExp, graduation: e.target.value})} />        
+                <input name="gradutaion" type="date" onChange={(e) => handleInputChange(e, exp.id)} />        
               </label>
               </div>
             <button>edit</button>      
@@ -50,7 +61,7 @@ function EdExp({callback}) {
           </div>
           )
         })}
-        <button>add</button>
+        <button onClick={handleAddbtn}>add</button>
       </form> 
     </>
   )
