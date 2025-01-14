@@ -31,6 +31,16 @@ function EdExp({callback}) {
     setEdExp(newList);
   }
 
+  const handleRemoveBtn = (e, id) => {
+    e.preventDefault();
+    const list = [...edExp];
+    const index = list.findIndex((item) => {
+      return item.id === id;
+    });
+    list.splice(index, 1);
+    setEdExp(list);
+  }
+
   return (
     <>
       <form>
@@ -57,7 +67,8 @@ function EdExp({callback}) {
               </label>
               </div>
             <button>edit</button>      
-            <button onClick={grabData}>submit</button>      
+            <button onClick={grabData}>submit</button>
+            {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
           </div>
           )
         })}
