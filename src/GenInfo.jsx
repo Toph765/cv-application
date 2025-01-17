@@ -27,7 +27,6 @@ function GenInfo({ callback }) {
                 <label htmlFor="phone">Phone number:</label>
                 <input id="phone" type="telephone"  onChange={e => setgenInfo({...genInfo, phone: e.target.value})}/>
             </div>
-            <button>Edit</button>
             <button onClick={grabData}>Submit</button>  
           </form>
       </>

@@ -123,7 +123,6 @@ function PracExp({callback}) {
                 <input type="date" onChange={(e) => handleChange(e, exp.id)} />      
                 </div>
                 <Resp />
-                <button>edit</button>    
                 <button onClick={grabData} type="submit">submit</button>
                 {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
               </div>

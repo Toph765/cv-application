@@ -65,8 +65,7 @@ function EdExp({callback}) {
                 Date graduated:
                 <input name="gradutaion" type="date" onChange={(e) => handleInputChange(e, exp.id)} />        
               </label>
-              </div>
-            <button>edit</button>      
+              </div>   
             <button onClick={grabData}>submit</button>
             {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
           </div>
