@@ -3,6 +3,7 @@ import './App.css'
 import GenInfo from './GenInfo'
 import EdExp from './EdExp'
 import PracExp from './PracExp'
+import Skill from './Skill'
 
 function App() {
   let genInfo, edExp, pracExp;
@@ -27,6 +28,7 @@ function App() {
       <GenInfo callback={grabGenInfo} />
       <EdExp callback={grabEdExp} />
       <PracExp callback={grabPracExp} />
+      <Skill/>
     </>
   )
 }
