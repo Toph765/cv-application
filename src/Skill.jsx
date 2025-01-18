@@ -13,6 +13,15 @@ function Skill() {
     setSkills(list);  
   }
     
+  const handleAddBtn = (e) => {
+    e.preventDefault();
+    const newList = [...skills, {
+      id: skills[skills.length - 1].id + 1,
+      skill: '',
+    }];
+    setSkills(newList);
+  }
+    
   return (
     <>
       <form>
@@ -31,7 +40,7 @@ function Skill() {
                 </div>
               )})}
           </label>
-          <button>add</button>
+          <button onClick={handleAddBtn}>add</button>
           <button>Submit</button>        
         </div>
       </form>
