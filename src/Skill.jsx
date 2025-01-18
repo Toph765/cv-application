@@ -22,6 +22,16 @@ function Skill() {
     setSkills(newList);
   }
     
+  const handleRemoveBtn = (e, id) => {
+    e.preventDefault();
+    const list = [...skills];  
+    const index = list.findIndex(item => {
+      return item.id === id;
+    });
+    list.splice(index, 1);  
+    setSkills(list);
+  }
+    
   return (
     <>
       <form>
