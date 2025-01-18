@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Skill() {
+function Skill({callback}) {
   const [skills, setSkills] = useState([{
     id: 0,
     skill: '',
@@ -32,6 +32,11 @@ function Skill() {
     setSkills(list);
   }
     
+  const grabData = (e) => {
+    e.preventDefault();
+    callback(skills);
+  }
+    
   return (
     <>
       <form>
@@ -51,7 +56,7 @@ function Skill() {
               )})}
           </label>
           <button onClick={handleAddBtn}>add</button>
-          <button>Submit</button>        
+          <button onClick={grabData}>Submit</button>        
         </div>
       </form>
     </>
