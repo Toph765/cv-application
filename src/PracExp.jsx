@@ -1,10 +1,27 @@
 import { useState } from "react";
 
-function Resp() {
+function Resp({obj, func}) {
   const [resp, setResp] = useState([{
     id: 0,
     responsibilities: '',
   }]);
+
+  let temp;
+
+  const processResp = () => {
+    const list = [];
+    resp.map(item => {
+      list.push(item.responsibilities);
+    })
+    return list;
+  }
+
+  const handleSubmitBtn = (e) => {
+    e.preventDefault();
+    obj.responsibilities = processResp(resp);
+    temp = obj;
+    func(temp);
+  }
 
   const handleAddInput = (e) => {
     e.preventDefault();
@@ -14,8 +31,6 @@ function Resp() {
   }];
     setResp(list);
   }
-
-  console.log(resp);
 
   const handleInputChange = (e, id) => {
     const { name, value } = e.target;
@@ -53,6 +68,7 @@ function Resp() {
       )
     })}
       <button onClick={handleAddInput}>add</button>
+      <button onClick={handleSubmitBtn}>submit</button>
     </div>
   )
 }
@@ -64,7 +80,17 @@ function PracExp({callback}) {
     position: '',
     from: '',
     to: '',
+    responsibilities: null,
   }])
+
+  const assignResp = (data) => {
+    const list = [...pracExp];
+    const index = list.findIndex(item => {
+      return item.id === data.id;
+    });
+    list[index] = data;
+    setPracExp(list);
+  }
 
   const grabData = (e) => {
     e.preventDefault();
@@ -122,7 +148,7 @@ function PracExp({callback}) {
                 <input type="date" onChange={(e) => handleChange(e, exp.id)} />     
                 <input type="date" onChange={(e) => handleChange(e, exp.id)} />      
                 </div>
-                <Resp />
+                <Resp obj={exp} func={assignResp}/>
                 {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
               </div>
             )
