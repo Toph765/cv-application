@@ -41,8 +41,7 @@ function Skill({callback}) {
     <>
       <form>
         <div>
-          <label>
-            Skills: 
+          <div>Skills:</div>
             {skills.map((item) => {
               return (
                 <div key={item.id}>
@@ -54,7 +53,6 @@ function Skill({callback}) {
                   {skills.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, item.id)}>X</button>)}
                 </div>
               )})}
-          </label>
           <button onClick={handleAddBtn}>add</button>
           <button onClick={grabData}>Submit</button>        
         </div>
