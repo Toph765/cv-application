@@ -6,21 +6,10 @@ function Resp({obj, func}) {
     responsibilities: '',
   }]);
 
-  let temp;
-
-  const processResp = () => {
-    const list = [];
-    resp.map(item => {
-      list.push(item.responsibilities);
-    })
-    return list;
-  }
-
   const handleSubmitBtn = (e) => {
     e.preventDefault();
-    obj.responsibilities = processResp(resp);
-    temp = obj;
-    func(temp);
+    obj.responsibilities = resp;
+    func(obj);
   }
 
   const handleAddInput = (e) => {
@@ -145,8 +134,8 @@ function PracExp({callback}) {
                   </label>    
                 </div>
                 <div>
-                <input type="date" onChange={(e) => handleChange(e, exp.id)} />     
-                <input type="date" onChange={(e) => handleChange(e, exp.id)} />      
+                <input  name="from" type="date" onChange={(e) => handleChange(e, exp.id)} />     
+                <input name="to" type="date" onChange={(e) => handleChange(e, exp.id)} />      
                 </div>
                 <Resp obj={exp} func={assignResp}/>
                 {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
