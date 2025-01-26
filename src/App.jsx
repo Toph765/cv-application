@@ -4,36 +4,71 @@ import GenInfo from './GenInfo'
 import EdExp from './EdExp'
 import PracExp from './PracExp'
 import Skill from './Skill'
+import ShowGenInfo from './ShowGenInfo'
+import ShowEdExp from './ShowEdExp'
+import ShowPracExp from './ShowPracExp'
+import ShowSkills from './ShowSkills'
 
 function App() {
-  let genInfo, edExp, pracExp, skills;
+  const [genInfo, setGenInfo] = useState(null);
+  const [edExp, setEdExp] = useState(null);
+  const [pracExp, setPracExp] = useState(null);
+  const [skills, setSkills] = useState(null);
 
   const grabGenInfo = (data) => {
     console.log(data);
-    return genInfo = data;
+    setGenInfo(data);
   }
 
   const grabEdExp = (data) => {
     console.log(data);
-    return edExp = data;
+    setEdExp(data);
   }
 
   const grabPracExp = (data) => {
     console.log(data);
-    return pracExp = data;
+    setPracExp(data);
   }
 
   const grabSkills = (data) => {
     console.log(data);
-    return skills = data;
+    setSkills(data);
   }
 
   return (
     <>
-      <GenInfo callback={grabGenInfo} />
-      <EdExp callback={grabEdExp} />
-      <PracExp callback={grabPracExp} />
-      <Skill callback={grabSkills} />
+    <main>
+      <div>
+        <GenInfo callback={grabGenInfo} />
+        <div>
+          <div>Education</div>
+          <EdExp callback={grabEdExp} />
+        </div>  
+        <div>
+          <div>Experience</div>
+          <PracExp callback={grabPracExp} />
+        </div>  
+        <div>
+          <div>Skills</div>
+          <Skill callback={grabSkills} />
+        </div>  
+      </div>
+      <div>
+          <ShowGenInfo obj={genInfo} />
+          <div>
+            <div>Education</div>
+            <ShowEdExp data={edExp} />
+          </div>
+          <div>
+            <div>Experience</div>
+            <ShowPracExp data={pracExp} />
+          </div>
+          <div>
+            <div>Skills</div>
+            <ShowSkills data={skills}/>
+          </div>
+      </div>  
+    </main>
     </>
   )
 }
