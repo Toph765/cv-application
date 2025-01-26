@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import './App.css'
-import GenInfo from './GenInfo'
-import EdExp from './EdExp'
-import PracExp from './PracExp'
-import Skill from './Skill'
-import ShowGenInfo from './ShowGenInfo'
-import ShowEdExp from './ShowEdExp'
-import ShowPracExp from './ShowPracExp'
-import ShowSkills from './ShowSkills'
+import GenInfo from './components/GenInfo'
+import EdExp from './components/EdExp'
+import PracExp from './components/PracExp'
+import Skill from './components/Skill'
+import ShowGenInfo from './components/ShowGenInfo'
+import ShowEdExp from './components/ShowEdExp'
+import ShowPracExp from './components/ShowPracExp'
+import ShowSkills from './components/ShowSkills'
 
 function App() {
   const [genInfo, setGenInfo] = useState(null);
