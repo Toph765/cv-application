@@ -14,6 +14,8 @@ function GenInfo({ callback }) {
 
   return (
       <>
+        <div>
+          <div>Personal Details</div>      
           <form>
             <div>
                 <label htmlFor="name">Name:</label>
@@ -29,6 +31,7 @@ function GenInfo({ callback }) {
             </div>
             <button onClick={grabData}>Submit</button>  
           </form>
+        </div>  
       </>
   )
 }
