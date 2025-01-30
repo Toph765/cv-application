@@ -39,24 +39,26 @@ function Skill({callback}) {
     
   return (
     <>
-      <form>
-        <div>
-          <div>Skills:</div>
-            {skills.map((item) => {
-              return (
-                <div key={item.id}>
-                  <input
-                      value={item.skill}    
-                      name="skill"
-                      type="text"
-                      onChange={(e) => handleInputChange(e, item.id)} />
-                  {skills.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, item.id)}>X</button>)}
-                </div>
-              )})}
-          <button onClick={handleAddBtn}>add</button>
-          <button onClick={grabData}>Submit</button>        
-        </div>
-      </form>
+      <div className="form-container">
+        <div>Skills</div>
+        <form>
+          <div>
+              {skills.map((item) => {
+                return (
+                  <div key={item.id}>
+                    <input
+                        value={item.skill}    
+                        name="skill"
+                        type="text"
+                        onChange={(e) => handleInputChange(e, item.id)} />
+                    {skills.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, item.id)}>X</button>)}
+                  </div>
+                )})}
+            <button onClick={handleAddBtn}>add</button>
+            <button onClick={grabData}>Submit</button>        
+          </div>
+        </form>
+      </div>
     </>
   )}
 

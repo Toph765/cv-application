@@ -117,34 +117,37 @@ function PracExp({callback}) {
 
     return (
       <>
-        <form>
-          {pracExp.map((exp) => {
-            return (
-              <div key={exp.id}>
-                <div>
-                  <label>
-                    Company name:
-                    <input name="companyName" type="text" onChange={(e) => handleChange(e, exp.id)} />
-                  </label>
+        <div className="form-container">
+          <div>Experience</div>
+          <form>
+            {pracExp.map((exp) => {
+              return (
+                <div key={exp.id}>
+                  <div>
+                    <label>
+                      Company name:
+                      <input name="companyName" type="text" onChange={(e) => handleChange(e, exp.id)} />
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                    Position title:
+                    <input name="position" type="text" onChange={(e) => handleChange(e, exp.id)} />     
+                    </label>    
+                  </div>
+                  <div>
+                  <input  name="from" type="date" onChange={(e) => handleChange(e, exp.id)} />     
+                  <input name="to" type="date" onChange={(e) => handleChange(e, exp.id)} />      
+                  </div>
+                  <Resp obj={exp} func={assignResp}/>
+                  {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
                 </div>
-                <div>
-                  <label>
-                  Position title:
-                  <input name="position" type="text" onChange={(e) => handleChange(e, exp.id)} />     
-                  </label>    
-                </div>
-                <div>
-                <input  name="from" type="date" onChange={(e) => handleChange(e, exp.id)} />     
-                <input name="to" type="date" onChange={(e) => handleChange(e, exp.id)} />      
-                </div>
-                <Resp obj={exp} func={assignResp}/>
-                {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
-              </div>
-            )
-          })}
-          <button onClick={handleAddExp}>add</button>
-          <button onClick={grabData} type="submit">submit</button>
-          </form>      
+              )
+            })}
+            <button onClick={handleAddExp}>add</button>
+            <button onClick={grabData} type="submit">submit</button>
+            </form>   
+        </div>   
       </>
   )
 }

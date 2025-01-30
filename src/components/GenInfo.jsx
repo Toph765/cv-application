@@ -14,7 +14,7 @@ function GenInfo({ callback }) {
 
   return (
       <>
-        <div>
+        <div className="form-container">
           <div>Personal Details</div>      
           <form>
             <div>

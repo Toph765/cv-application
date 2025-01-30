@@ -43,36 +43,39 @@ function EdExp({callback}) {
 
   return (
     <>
-      <form>
-        {edExp.map((exp) => {
-          return (
-          <div key={exp.id}>
-            <div>
+      <div className="form-container">
+        <div>Education</div>
+        <form>
+          {edExp.map((exp) => {
+            return (
+            <div key={exp.id}>
+              <div>
+                  <label>
+                    School name:
+                <input name="schoolName" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
+                </label>
+                </div>
+              
+              <div>
                 <label>
-                  School name:
-              <input name="schoolName" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
-              </label>
+                  Program:
+                  <input name="program" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
+                </label>
               </div>
-            
-            <div>
-              <label>
-                Program:
-                <input name="program" type="text" onChange={(e) => handleInputChange(e, exp.id)} />        
-              </label>
+              <div>
+                <label>
+                  Date graduated:
+                  <input name="graduation" type="date" onChange={(e) => handleInputChange(e, exp.id)} />        
+                </label>
+                </div>   
+              {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
             </div>
-            <div>
-              <label>
-                Date graduated:
-                <input name="graduation" type="date" onChange={(e) => handleInputChange(e, exp.id)} />        
-              </label>
-              </div>   
-            {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
-          </div>
-          )
-        })}
-        <button onClick={handleAddbtn}>add</button>
-        <button onClick={grabData}>submit</button>
-      </form> 
+            )
+          })}
+          <button onClick={handleAddbtn}>add</button>
+          <button onClick={grabData}>submit</button>
+        </form> 
+      </div>
     </>
   )
 }
