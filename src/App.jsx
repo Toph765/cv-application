@@ -40,20 +40,11 @@ function App() {
     <main>
       <div>
         <GenInfo callback={grabGenInfo} />
-        <div>
-          <div>Education</div>
-          <EdExp callback={grabEdExp} />
-        </div>  
-        <div>
-          <div>Experience</div>
-          <PracExp callback={grabPracExp} />
-        </div>  
-        <div>
-          <div>Skills</div>
-          <Skill callback={grabSkills} />
-        </div>  
+        <EdExp callback={grabEdExp} />
+        <PracExp callback={grabPracExp} />
+        <Skill callback={grabSkills} />
       </div>
-      <div>
+      <div className='cv-container'>
           <ShowGenInfo obj={genInfo} />
           <div>
             <div>Education</div>
