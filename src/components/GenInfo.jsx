@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-function GenInfo({ callback }) {
+function GenInfo({ callback, isActive, onShow }) {
     const [genInfo, setgenInfo] = useState({
-        name: '',
-        email: '',
-        phone: ''
+      name: '',
+      address: '',
+      email: '',
+      phone: ''
     });
 
     const grabData = (e) => {
@@ -15,22 +16,38 @@ function GenInfo({ callback }) {
   return (
       <>
         <div className="form-container">
-          <div>Personal Details</div>      
+          <div>Personal Details</div>   
+          {isActive ? (
           <form>
             <div>
-                <label htmlFor="name">Name:</label>
-                  <input id="name" type="text" onChange={e => setgenInfo({ ...genInfo, name: e.target.value })} />
+              <label>
+                Name:
+                <input name="name" type="text" onChange={e => setgenInfo({ ...genInfo, name: e.target.value })} />
+              </label>
             </div>
             <div>
-                <label htmlFor="email">E-mail:</label>
-                <input id="email" type="email"  onChange={e => setgenInfo({...genInfo, email: e.target.value})}/>
+              <label>
+                Address:
+                <input name="address" type="text" onChange={e => setgenInfo({ ...genInfo, address: e.target.value })} />
+              </label>
             </div>
             <div>
-                <label htmlFor="phone">Phone number:</label>
-                <input id="phone" type="telephone"  onChange={e => setgenInfo({...genInfo, phone: e.target.value})}/>
+              <label>
+                E-mail:
+                <input name="email" type="email" onChange={e => setgenInfo({ ...genInfo, email: e.target.value })} />
+              </label>
+            </div>
+            <div>
+              <label>
+                Phone number:
+                <input name="phone" type="telephone" onChange={e => setgenInfo({ ...genInfo, phone: e.target.value })} />
+              </label>
             </div>
             <button onClick={grabData}>Submit</button>  
           </form>
+          ) : (
+            <button onClick={onShow}>Show</button>
+          )}
         </div>  
       </>
   )

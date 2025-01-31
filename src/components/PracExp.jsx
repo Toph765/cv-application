@@ -62,7 +62,7 @@ function Resp({obj, func}) {
   )
 }
 
-function PracExp({callback}) {
+function PracExp({callback, isActive, onShow}) {
   const [pracExp, setPracExp] = useState([{
     id: 1,
     companyName: '',
@@ -119,6 +119,7 @@ function PracExp({callback}) {
       <>
         <div className="form-container">
           <div>Experience</div>
+          {isActive ? (
           <form>
             {pracExp.map((exp) => {
               return (
@@ -146,7 +147,10 @@ function PracExp({callback}) {
             })}
             <button onClick={handleAddExp}>add</button>
             <button onClick={grabData} type="submit">submit</button>
-            </form>   
+            </form>  
+          ) : (
+              <button onClick={onShow}>Show</button>
+          )} 
         </div>   
       </>
   )

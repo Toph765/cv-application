@@ -4,6 +4,7 @@ function ShowGenInfo({obj}) {
             <div>
                 {obj && (<div>Name: {obj.name}</div>)}
                 <div>
+                    {obj && (<div>Address: {obj.address}</div>)}
                     {obj && (<div>Email: {obj.email}</div>)}
                     {obj && (<div>Phone: {obj.phone}</div>)}
                 </div>

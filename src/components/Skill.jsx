@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Skill({callback}) {
+function Skill({callback, isActive, onShow}) {
   const [skills, setSkills] = useState([{
     id: 0,
     skill: '',
@@ -41,23 +41,27 @@ function Skill({callback}) {
     <>
       <div className="form-container">
         <div>Skills</div>
-        <form>
-          <div>
-              {skills.map((item) => {
-                return (
-                  <div key={item.id}>
-                    <input
-                        value={item.skill}    
-                        name="skill"
-                        type="text"
-                        onChange={(e) => handleInputChange(e, item.id)} />
-                    {skills.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, item.id)}>X</button>)}
-                  </div>
-                )})}
-            <button onClick={handleAddBtn}>add</button>
-            <button onClick={grabData}>Submit</button>        
-          </div>
-        </form>
+        {isActive ? (
+          <form>
+            <div>
+                {skills.map((item) => {
+                  return (
+                    <div key={item.id}>
+                      <input
+                          value={item.skill}    
+                          name="skill"
+                          type="text"
+                          onChange={(e) => handleInputChange(e, item.id)} />
+                      {skills.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, item.id)}>X</button>)}
+                    </div>
+                  )})}
+              <button onClick={handleAddBtn}>add</button>
+              <button onClick={grabData}>Submit</button>        
+            </div>
+          </form>
+        ) : (
+            <button onClick={onShow}>Show</button>
+        )}
       </div>
     </>
   )}
