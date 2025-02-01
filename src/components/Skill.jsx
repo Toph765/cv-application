@@ -40,7 +40,7 @@ function Skill({callback, isActive, onShow}) {
   return (
     <>
       <div className="form-container">
-        <div>Skills</div>
+        <h2>Skills</h2>
         {isActive ? (
           <form>
             <div>
