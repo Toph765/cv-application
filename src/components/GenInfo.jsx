@@ -16,7 +16,7 @@ function GenInfo({ callback, isActive, onShow }) {
   return (
       <>
         <div className="form-container">
-          <div>Personal Details</div>   
+          <h2>Personal Details</h2>   
           {isActive ? (
           <form>
             <div>
