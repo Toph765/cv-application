@@ -44,7 +44,7 @@ function EdExp({callback, isActive, onShow}) {
   return (
     <>
       <div className="form-container">
-        <div>Education</div>
+        <h2>Education</h2>
         {isActive ? (
           <form>
             {edExp.map((exp) => {
@@ -66,7 +66,7 @@ function EdExp({callback, isActive, onShow}) {
                 <div>
                   <label>
                     Date graduated:
-                    <input name="graduation" type="date" onChange={(e) => handleInputChange(e, exp.id)} />        
+                    <input name="graduation" type="month" onChange={(e) => handleInputChange(e, exp.id)} />        
                   </label>
                   </div>   
                 {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}

@@ -118,7 +118,7 @@ function PracExp({callback, isActive, onShow}) {
     return (
       <>
         <div className="form-container">
-          <div>Experience</div>
+          <h2>Experience</h2>
           {isActive ? (
           <form>
             {pracExp.map((exp) => {
@@ -137,8 +137,16 @@ function PracExp({callback, isActive, onShow}) {
                     </label>    
                   </div>
                   <div>
-                  <input  name="from" type="date" onChange={(e) => handleChange(e, exp.id)} />     
-                  <input name="to" type="date" onChange={(e) => handleChange(e, exp.id)} />      
+                    <label>
+                      From:
+                      <input name="from" type="month" onChange={(e) => handleChange(e, exp.id)} />
+                    </label>     
+                  </div>
+                  <div>
+                    <label>
+                      To:
+                      <input name="to" type="month" onChange={(e) => handleChange(e, exp.id)} />
+                    </label>      
                   </div>
                   <Resp obj={exp} func={assignResp}/>
                   {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
