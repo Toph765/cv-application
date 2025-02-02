@@ -2,11 +2,11 @@ function ShowGenInfo({obj}) {
     return (
         <>
             <div>
-                {obj && (<div>Name: {obj.name}</div>)}
+                {obj && (<div>{obj.name}</div>)}
                 <div>
-                    {obj && (<div>Address: {obj.address}</div>)}
-                    {obj && (<div>Email: {obj.email}</div>)}
-                    {obj && (<div>Phone: {obj.phone}</div>)}
+                    {obj && (<span>{obj.address} |</span>)}
+                    {obj && (<span> {obj.email} |</span>)}
+                    {obj && (<span> {obj.phone}</span>)}
                 </div>
             </div>
         </>
