@@ -11,7 +11,12 @@ import ShowSkills from './components/ShowSkills'
 import { use } from 'react'
 
 function App() {
-  const [genInfo, setGenInfo] = useState(null);
+  const [genInfo, setGenInfo] = useState({
+      name: 'John Doe',
+      address: 'Legazpi City, Albay',
+      email: 'johnDoe@gmail.com',
+      phone: '123-4567-890'
+    });
   const [edExp, setEdExp] = useState(null);
   const [pracExp, setPracExp] = useState(null);
   const [skills, setSkills] = useState(null);
@@ -48,8 +53,10 @@ function App() {
         <Skill callback={grabSkills}  isActive={activeIndex === 3} onShow={() => setActiveIndex(3)}/>
       </section>
       <div className='cv-container'>
+        <div>    
           <ShowGenInfo obj={genInfo} />
-          <hr />
+            <hr />
+        </div>
           <div>
             <div>Education</div>
             <hr />
