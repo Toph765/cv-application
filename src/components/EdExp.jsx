@@ -73,8 +73,8 @@ function EdExp({callback, isActive, onShow}) {
               </div>
               )
             })}
-            <button onClick={handleAddbtn}>add</button>
-            <button onClick={grabData}>submit</button>
+            <button onClick={handleAddbtn}>+</button>
+            <button onClick={grabData}>Save</button>
           </form> 
         ) : (
             <button onClick={onShow}>Show</button>
