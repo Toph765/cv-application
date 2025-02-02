@@ -6,9 +6,8 @@ function Resp({obj, func}) {
     responsibilities: '',
   }]);
 
-  const handleSubmitBtn = (e) => {
-    e.preventDefault();
-    obj.responsibilities = resp;
+  const handleFunc = (data) => {
+    obj.responsibilities = data;
     func(obj);
   }
 
@@ -26,6 +25,7 @@ function Resp({obj, func}) {
     const list = [...resp];
     list.filter(resp => resp.id === id)[0][name] = value;
     setResp(list);
+    handleFunc(list);
   }
 
   const handleRemoveBtn = (e, id) => {
@@ -36,6 +36,7 @@ function Resp({obj, func}) {
     });
     list.splice(index, 1);
     setResp(list);
+    handleFunc(list);
   }
 
   return (
@@ -44,12 +45,10 @@ function Resp({obj, func}) {
       {resp.map((duty) => {
         return (
           <div key={duty.id}>
-            <div>
-            <label>
+            <div className="resp-form">
               <input type="text" name="responsibilities"
                 value={duty.responsibilities}
                 onChange={e => handleInputChange(e, duty.id)} />
-            </label>
               {resp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, duty.id)}>x</button>)}
               
             </div>
@@ -57,7 +56,6 @@ function Resp({obj, func}) {
       )
     })}
       <button onClick={handleAddInput}>add</button>
-      <button onClick={handleSubmitBtn}>submit</button>
     </div>
   )
 }
@@ -153,8 +151,8 @@ function PracExp({callback, isActive, onShow}) {
                 </div>
               )
             })}
-            <button onClick={handleAddExp}>add</button>
-            <button onClick={grabData} type="submit">submit</button>
+            <button onClick={handleAddExp}>+</button>
+            <button onClick={grabData} type="submit">Save</button>
             </form>  
           ) : (
               <button onClick={onShow}>Show</button>
