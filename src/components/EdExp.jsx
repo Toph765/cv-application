@@ -3,9 +3,9 @@ import { useState } from "react";
 function EdExp({callback, isActive, onShow}) {
   const [edExp, setEdExp] = useState([{
     id: 0,
-    schoolName: '',
-    program: '',
-    graduation: ''
+    schoolName: 'Bicol University',
+    program: 'Computer Science',
+    graduation: '2018-04'
   }])
 
   const grabData = (e) => {

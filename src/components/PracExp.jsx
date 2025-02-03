@@ -2,9 +2,13 @@ import { useState } from "react";
 
 function Resp({obj, func}) {
   const [resp, setResp] = useState([{
-    id: 0,
-    responsibilities: '',
-  }]);
+      id: 0,
+      responsibilities: 'Make coffee.',
+    },
+    {
+      id: 1,
+      responsibilities: 'Write code.',
+    }]);
 
   const handleFunc = (data) => {
     obj.responsibilities = data;
@@ -63,11 +67,18 @@ function Resp({obj, func}) {
 function PracExp({callback, isActive, onShow}) {
   const [pracExp, setPracExp] = useState([{
     id: 1,
-    companyName: '',
-    position: '',
-    from: '',
-    to: '',
-    responsibilities: null,
+    companyName: 'Some Company',
+    position: 'Software Developer',
+    from: '2024-05',
+    to: '2025-07',
+    responsibilities: [{
+      id: 0,
+      responsibilities: 'Make coffee.',
+    },
+    {
+      id: 1,
+      responsibilities: 'Write code.',
+    }],
   }])
 
   const assignResp = (data) => {
@@ -125,25 +136,25 @@ function PracExp({callback, isActive, onShow}) {
                   <div>
                     <label>
                       Company name:
-                      <input name="companyName" type="text" onChange={(e) => handleChange(e, exp.id)} />
+                      <input name="companyName" value={exp.companyName} type="text" onChange={(e) => handleChange(e, exp.id)} />
                     </label>
                   </div>
                   <div>
                     <label>
                     Position title:
-                    <input name="position" type="text" onChange={(e) => handleChange(e, exp.id)} />     
+                    <input name="position" value={exp.position} type="text" onChange={(e) => handleChange(e, exp.id)} />     
                     </label>    
                   </div>
                   <div>
                     <label>
                       From:
-                      <input name="from" type="month" onChange={(e) => handleChange(e, exp.id)} />
+                      <input name="from" value={exp.from} type="month" onChange={(e) => handleChange(e, exp.id)} />
                     </label>     
                   </div>
                   <div>
                     <label>
                       To:
-                      <input name="to" type="month" onChange={(e) => handleChange(e, exp.id)} />
+                      <input name="to" value={exp.to} type="month" onChange={(e) => handleChange(e, exp.id)} />
                     </label>      
                   </div>
                   <Resp obj={exp} func={assignResp}/>
