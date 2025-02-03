@@ -1,4 +1,6 @@
-function ShowEdExp({data}) {
+import { format } from "date-fns";
+
+function ShowEdExp({ data }) {
     return (
         <>
             <div>
@@ -6,8 +8,8 @@ function ShowEdExp({data}) {
                     return (
                         <div key={item.id}>
                             <div>
-                                <span>{item.schoolName}</span>
-                                <span>{item.graduation}</span>
+                                <h4>{item.schoolName}</h4>
+                                <i>{format(item.graduation, 'MMM yyyy')}</i>
                             </div>
                             <div>
                                 {item.program}

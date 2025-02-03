@@ -1,4 +1,6 @@
-function ShowPracExp({data}) {
+import { format } from "date-fns";
+
+function ShowPracExp({ data }) {
     return (
         <>
             <div>
@@ -6,8 +8,8 @@ function ShowPracExp({data}) {
                     return (
                         <div key={item.id}>
                             <div>
-                                <span>{item.companyName}</span>
-                                <span>{item.from} - {item.to}</span>
+                                <h4>{item.companyName}</h4>
+                                <i>{format(item.from, "MMM yyyy")} - {format(item.to, "MMM yyyy")}</i>
                             </div>
                             <div>
                                 {item.position}
