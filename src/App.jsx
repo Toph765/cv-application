@@ -16,10 +16,40 @@ function App() {
       address: 'Legazpi City, Albay',
       email: 'johnDoe@gmail.com',
       phone: '123-4567-890'
-    });
-  const [edExp, setEdExp] = useState(null);
-  const [pracExp, setPracExp] = useState(null);
-  const [skills, setSkills] = useState(null);
+  });
+  
+  const [edExp, setEdExp] = useState([{
+    id: 0,
+    schoolName: 'Bicol University',
+    program: 'Computer Science',
+    graduation: '2018-04'
+  }]);
+
+  const [pracExp, setPracExp] = useState([{
+    id: 1,
+    companyName: 'Some Company',
+    position: 'Software Developer',
+    from: '2024-05',
+    to: '2025-07',
+    responsibilities: [{
+      id: 0,
+      responsibilities: 'Make coffee.',
+    },
+    {
+      id: 1,
+      responsibilities: 'Write code.',
+    }],
+  }]);
+
+  const [skills, setSkills] = useState([{
+    id: 0,
+    skill: 'javascript, html, css',
+  },
+  {
+    id: 1,
+  skill: 'Team player'  
+  }]);
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const grabGenInfo = (data) => {
@@ -58,17 +88,17 @@ function App() {
             <hr />
         </div>
           <div>
-            <div>Education</div>
+            <h3>Education</h3>
             <hr />
             <ShowEdExp data={edExp} />
           </div>
           <div>
-            <div>Experience</div>
+            <h3>Experience</h3>
             <hr />
             <ShowPracExp data={pracExp} />
           </div>
           <div>
-            <div>Skills</div>
+            <h3>Skills</h3>
             <hr />
             <ShowSkills data={skills}/>
           </div>
