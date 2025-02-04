@@ -47,7 +47,7 @@ function Skill({callback, isActive, onShow}) {
         <h2>Skills</h2>
         {isActive ? (
           <form>
-            <div>
+            <div className="form-block">
                 {skills.map((item) => {
                   return (
                     <div key={item.id}>

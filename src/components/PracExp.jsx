@@ -44,7 +44,7 @@ function Resp({obj, func}) {
   }
 
   return (
-    <div>
+    <div className="form-block">
       <div>Responsibilities:</div>
       {resp.map((duty) => {
         return (
@@ -132,7 +132,7 @@ function PracExp({callback, isActive, onShow}) {
           <form>
             {pracExp.map((exp) => {
               return (
-                <div key={exp.id}>
+                <div key={exp.id} className="form-block">
                   <div>
                     <label>
                       Company name:
