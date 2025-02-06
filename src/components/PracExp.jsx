@@ -1,69 +1,5 @@
 import { useState } from "react";
 
-function Resp({obj, func}) {
-  const [resp, setResp] = useState([{
-      id: 0,
-      responsibilities: 'Make coffee.',
-    },
-    {
-      id: 1,
-      responsibilities: 'Write code.',
-    }]);
-
-  const handleFunc = (data) => {
-    obj.responsibilities = data;
-    func(obj);
-  }
-
-  const handleAddInput = (e) => {
-    e.preventDefault();
-    const list = [...resp, {
-    id: resp[resp.length - 1].id + 1,
-    responsibilities: '',
-  }];
-    setResp(list);
-  }
-
-  const handleInputChange = (e, id) => {
-    const { name, value } = e.target;
-    const list = [...resp];
-    list.filter(resp => resp.id === id)[0][name] = value;
-    setResp(list);
-    handleFunc(list);
-  }
-
-  const handleRemoveBtn = (e, id) => {
-    e.preventDefault();
-    const list = [...resp];
-    const index = list.findIndex((item) => {
-      return item.id === id;
-    });
-    list.splice(index, 1);
-    setResp(list);
-    handleFunc(list);
-  }
-
-  return (
-    <div className="form-block">
-      <div>Responsibilities:</div>
-      {resp.map((duty) => {
-        return (
-          <div key={duty.id}>
-            <div className="resp-form">
-              <input type="text" name="responsibilities"
-                value={duty.responsibilities}
-                onChange={e => handleInputChange(e, duty.id)} />
-              {resp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, duty.id)}>x</button>)}
-              
-            </div>
-          </div>
-      )
-    })}
-      <button onClick={handleAddInput}>add</button>
-    </div>
-  )
-}
-
 function PracExp({callback, isActive, onShow}) {
   const [pracExp, setPracExp] = useState([{
     id: 1,
@@ -73,22 +9,13 @@ function PracExp({callback, isActive, onShow}) {
     to: '2025-07',
     responsibilities: [{
       id: 0,
-      responsibilities: 'Make coffee.',
+      task: 'Make coffee.',
     },
     {
       id: 1,
-      responsibilities: 'Write code.',
+      task: 'Write code.',
     }],
   }])
-
-  const assignResp = (data) => {
-    const list = [...pracExp];
-    const index = list.findIndex(item => {
-      return item.id === data.id;
-    });
-    list[index] = data;
-    setPracExp(list);
-  }
 
   const grabData = (e) => {
     e.preventDefault();
@@ -102,16 +29,42 @@ function PracExp({callback, isActive, onShow}) {
     setPracExp(list);
   }
 
+  const handleInputChange = (e, id, expId) => {
+    const { name, value } = e.target;
+    const temp = [...pracExp];
+    const obj = temp.filter(item => item.id === expId)[0];
+    const list = [...obj.responsibilities];
+    list.filter(task => task.id === id)[0][name] = value;
+    temp.filter(item => item.id === expId)[0].responsibilities = list;
+    setPracExp(temp);
+  }
+
   const handleAddExp = (e) => {
     e.preventDefault();
     const newList = [...pracExp, {
+      id: pracExp[pracExp.length-1].id + 1,
       companyName: '',
       position: '',
       from: '',
       to: '',
-      id: pracExp[pracExp.length-1].id + 1,
+      responsibilities: [{
+        id: 0,
+        task: '',
+      }]
     }];
     setPracExp(newList);
+  }
+  
+  const handleAddInput = (e, expId) => {
+    e.preventDefault();
+    const temp = [...pracExp];
+    const obj = temp.filter(item => item.id === expId)[0];
+    const list = [...obj.responsibilities, {
+      id: (obj.responsibilities.length > 0 ? obj.responsibilities[obj.responsibilities.length - 1].id + 1 : 0),
+      task: '',
+    }];
+    temp.filter(item => item.id === expId)[0].responsibilities = list;
+    setPracExp(temp);
   }
 
   const handleRemoveBtn = (e, id) => {
@@ -122,6 +75,19 @@ function PracExp({callback, isActive, onShow}) {
     })
     list.splice(index, 1);
     setPracExp(list);
+  }
+
+  const handleRespRemoveBtn = (e, id, expId) => {
+    e.preventDefault();
+    const temp = [...pracExp];
+    const obj = temp.filter(item => item.id === expId)[0];
+    const list = [...obj.responsibilities];
+    const index = list.findIndex((item) => {
+      return item.id === id;
+    });
+    list.splice(index, 1);
+    temp.filter(item => item.id === expId)[0].responsibilities = list;
+    setPracExp(temp);
   }
 
     return (
@@ -157,7 +123,21 @@ function PracExp({callback, isActive, onShow}) {
                       <input name="to" value={exp.to} type="month" onChange={(e) => handleChange(e, exp.id)} />
                     </label>      
                   </div>
-                  <Resp obj={exp} func={assignResp}/>
+                  <div>
+                    <div>Responsibilities</div>
+                    {exp.responsibilities.map((duty) => {
+                      return (
+                        <div key={duty.id}>
+                          <div className="resp-form">
+                            <input type="text" name="task"
+                              value={duty.task}
+                              onChange={e => handleInputChange(e, duty.id, exp.id)} />
+                            <button onClick={(e) => handleRespRemoveBtn(e, duty.id, exp.id)}>x</button>
+                          </div>
+                        </div>
+                      )})}
+                    <button onClick={(e) => handleAddInput(e, exp.id)}>add</button>
+                  </div>
                   {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
                 </div>
               )
