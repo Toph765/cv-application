@@ -5,7 +5,12 @@ function EdExp({callback, isActive, onShow}) {
     id: 0,
     schoolName: 'Bicol University',
     program: 'Computer Science',
-    graduation: '2018-04'
+    from: '2014-06',
+    to: '2018-04',
+    achievements: [{
+      id: 0,
+      text: 'Magna cumlaude',
+    }],
   }])
 
   const grabData = (e) => {
@@ -20,15 +25,42 @@ function EdExp({callback, isActive, onShow}) {
     setEdExp(list);
   }
 
+  const handleAchInputChange = (e, id, expId) => {
+    const { name, value } = e.target;
+    const temp = [...edExp];
+    const obj = temp.filter(item => item.id === expId)[0];
+    const list = [...obj.achievements];
+    list.filter(notes => notes.id === id)[0][name] = value;
+    temp.filter(item => item.id === expId)[0].achievements = list;
+    setEdExp(temp);
+  }
+
   const handleAddbtn = (e) => {
     e.preventDefault();
     const newList = [...edExp, {
       id: edExp[edExp.length - 1].id + 1,
       schoolName: '',
       program: '',
-      graduation: '',
+      from: '',
+      to: '',
+      achievements: [{
+        id: 0,
+        text: '',
+      }]
     }];
     setEdExp(newList);
+  }
+
+  const handleAddInput = (e, id) => {
+    e.preventDefault();
+    const temp = [...edExp];
+    const obj = temp.filter(item => item.id === id)[0];
+    const list = [...obj.achievements, {
+      id: (obj.achievements.length > 0 ? obj.achievements[obj.achievements.length - 1].id + 1 : 0),
+      text: '',
+    }];
+    temp.filter(item => item.id === id)[0].achievements = list;
+    setEdExp(temp);
   }
 
   const handleRemoveBtn = (e, id) => {
@@ -39,6 +71,19 @@ function EdExp({callback, isActive, onShow}) {
     });
     list.splice(index, 1);
     setEdExp(list);
+  }
+
+  const handleAchRemoveBtn = (e, id, expId) => {
+    e.preventDefault();
+    const temp = [...edExp];
+    const obj = temp.filter(item => item.id === expId)[0];
+    const list = [...obj.achievements]
+    const index = list.findIndex((item) => {
+      return item.id === id;
+    });
+    list.splice(index, 1);
+    temp.filter(item => item.id === expId)[0].achievements = list;
+    setEdExp(temp);
   }
 
   return (
@@ -65,10 +110,32 @@ function EdExp({callback, isActive, onShow}) {
                 </div>
                 <div>
                   <label>
-                    Date graduated:
-                    <input name="graduation" value={exp.graduation} type="month" onChange={(e) => handleInputChange(e, exp.id)} />        
+                    From:    
+                    <input name="from" value={exp.from} type="month" onChange={(e) => handleInputChange(e, exp.id)} />        
                   </label>
-                  </div>   
+                </div>  
+                <div>
+                  <label>
+                    To:
+                    <input name="to" value={exp.to} type="month" onChange={(e) => handleInputChange(e, exp.id)} />        
+                  </label>
+                </div>
+                <div  className="form-block">
+                    <div>Achievements:</div>
+                      {exp.achievements.map((item) => {
+                        return (
+                          <div key={item.id}>
+                            <div className="notes-form">
+                              <input type="text" name="text"
+                                value={item.text}
+                                onChange={e => handleAchInputChange(e, item.id, exp.id)} />
+                              <button onClick={(e) => handleAchRemoveBtn(e, item.id, exp.id)}>x</button>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    <button onClick={(e) => handleAddInput(e, exp.id)}>add</button>
+                </div>
                 {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
               </div>
               )
