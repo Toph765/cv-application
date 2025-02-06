@@ -17,7 +17,7 @@ function ShowPracExp({ data }) {
                             <div>
                                 <ul>
                                     {item.responsibilities && (item.responsibilities.map(resp => {
-                                        return (<li key={resp.id}>{resp.responsibilities}</li>)
+                                        return (<li key={resp.id}>{resp.task}</li>)
                                     }))}
                                 </ul>
                             </div>
