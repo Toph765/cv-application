@@ -22,7 +22,12 @@ function App() {
     id: 0,
     schoolName: 'Bicol University',
     program: 'Computer Science',
-    graduation: '2018-04'
+    from: '2014-06',
+    to: '2018-04',
+    achievements: [{
+      id: 0,
+      text: 'Magna cumlaude',
+    }],
   }]);
 
   const [pracExp, setPracExp] = useState([{
@@ -33,11 +38,11 @@ function App() {
     to: '2025-07',
     responsibilities: [{
       id: 0,
-      responsibilities: 'Make coffee.',
+      task: 'Make coffee.',
     },
     {
       id: 1,
-      responsibilities: 'Write code.',
+      task: 'Write code.',
     }],
   }]);
 
