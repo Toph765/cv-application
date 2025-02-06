@@ -9,10 +9,17 @@ function ShowEdExp({ data }) {
                         <div key={item.id}>
                             <div>
                                 <h4>{item.schoolName}</h4>
-                                <i>{format(item.graduation, 'MMM yyyy')}</i>
+                                <i>{format(item.from, 'MMM yyyy')} - {format(item.to, 'MMM yyyy')}</i>
                             </div>
                             <div>
                                 {item.program}
+                            </div>
+                            <div>
+                                <ul>
+                                    {item.achievements && (item.achievements.map(note => {
+                                        return (<li key={note.id}>{note.text}</li>)
+                                    }))}
+                                </ul>
                             </div>
                         </div>
                    )}))} 
