@@ -120,7 +120,7 @@ function EdExp({callback, isActive, onShow}) {
                     <input name="to" value={exp.to} type="month" onChange={(e) => handleInputChange(e, exp.id)} />        
                   </label>
                 </div>
-                <div  className="form-block">
+                <div className="form-block">
                     <div>Achievements:</div>
                       {exp.achievements.map((item) => {
                         return (
@@ -134,13 +134,13 @@ function EdExp({callback, isActive, onShow}) {
                           </div>
                         )
                       })}
-                    <button onClick={(e) => handleAddInput(e, exp.id)}>add</button>
+                    <button onClick={(e) => handleAddInput(e, exp.id)}>+</button>
                 </div>
                 {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
               </div>
               )
             })}
-            <button onClick={handleAddbtn}>+</button>
+            <button onClick={handleAddbtn}>Add</button>
             <button onClick={grabData}>Save</button>
           </form> 
         ) : (

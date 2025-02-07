@@ -123,8 +123,8 @@ function PracExp({callback, isActive, onShow}) {
                       <input name="to" value={exp.to} type="month" onChange={(e) => handleChange(e, exp.id)} />
                     </label>      
                   </div>
-                  <div>
-                    <div>Responsibilities</div>
+                  <div className="form-block">
+                    <div>Responsibilities:</div>
                     {exp.responsibilities.map((duty) => {
                       return (
                         <div key={duty.id}>
@@ -136,13 +136,13 @@ function PracExp({callback, isActive, onShow}) {
                           </div>
                         </div>
                       )})}
-                    <button onClick={(e) => handleAddInput(e, exp.id)}>add</button>
+                    <button onClick={(e) => handleAddInput(e, exp.id)}>+</button>
                   </div>
                   {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
                 </div>
               )
             })}
-            <button onClick={handleAddExp}>+</button>
+            <button onClick={handleAddExp}>add</button>
             <button onClick={grabData} type="submit">Save</button>
             </form>  
           ) : (
