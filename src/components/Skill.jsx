@@ -3,11 +3,19 @@ import { useState } from "react";
 function Skill({callback, isActive, onShow}) {
   const [skills, setSkills] = useState([{
     id: 0,
-    skill: 'javascript, html, css',
+    skill: 'JavaScript',
   },
   {
     id: 1,
-  skill: 'Team player'  
+    skill: 'HTML'  
+  },
+  {
+    id: 2,
+    skill: 'CSS'  
+  },
+  {
+    id: 3,
+    skill: 'React.js'  
   }]);
     
   const handleInputChange = (e, id) => {

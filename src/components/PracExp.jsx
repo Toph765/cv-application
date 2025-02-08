@@ -4,16 +4,20 @@ function PracExp({callback, isActive, onShow}) {
   const [pracExp, setPracExp] = useState([{
     id: 1,
     companyName: 'Some Company',
-    position: 'Software Developer',
+    position: 'Web Designer',
     from: '2024-05',
     to: '2025-07',
     responsibilities: [{
       id: 0,
-      task: 'Make coffee.',
+      task: 'Build mock designs and wireframes for landing pages for 6 new product concepts.',
     },
     {
       id: 1,
-      task: 'Write code.',
+      task: 'Created accessible, responsive, and functional user interfaces to allow visitors on any device to hace the same user experience.',
+    },
+    {
+      id: 2,
+      task: 'Creatd the user experience that fetched, parsed, and formatted nalytice data and relayed it into React components.',
     }],
   }])
 
