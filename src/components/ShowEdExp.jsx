@@ -7,7 +7,7 @@ function ShowEdExp({ data }) {
                 {data && (data.map(item => {
                     return (
                         <div key={item.id}>
-                            <div>
+                            <div className="block-title">
                                 <h4>{item.schoolName}</h4>
                                 <i>{format(item.from, 'MMM yyyy')} - {format(item.to, 'MMM yyyy')}</i>
                             </div>

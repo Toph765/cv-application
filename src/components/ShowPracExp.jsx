@@ -7,7 +7,7 @@ function ShowPracExp({ data }) {
                 {data && data.map(item => {
                     return (
                         <div key={item.id}>
-                            <div>
+                            <div className="block-title">
                                 <h4>{item.companyName}</h4>
                                 <i>{format(item.from, "MMM yyyy")} - {format(item.to, "MMM yyyy")}</i>
                             </div>
@@ -17,7 +17,7 @@ function ShowPracExp({ data }) {
                             <div>
                                 <ul>
                                     {item.responsibilities && (item.responsibilities.map(resp => {
-                                        return (<li key={resp.id}>{resp.task}</li>)
+                                        return (<li key={resp.id}><span>{resp.task}</span></li>)
                                     }))}
                                 </ul>
                             </div>
