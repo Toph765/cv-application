@@ -2,7 +2,7 @@ function ShowGenInfo({obj}) {
     return (
         <>
             <div>
-                {obj && (<div>{obj.name}</div>)}
+                {obj && (<h2>{obj.name}</h2>)}
                 <div>
                     {obj && (<span>{obj.address} |</span>)}
                     {obj && (<span> {obj.email} |</span>)}
