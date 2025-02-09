@@ -33,26 +33,38 @@ function App() {
   const [pracExp, setPracExp] = useState([{
     id: 1,
     companyName: 'Some Company',
-    position: 'Software Developer',
+    position: 'Web Designer',
     from: '2024-05',
     to: '2025-07',
     responsibilities: [{
       id: 0,
-      task: 'Make coffee.',
+      task: 'Build mock designs and wireframes for landing pages for 6 new product concepts.',
     },
     {
       id: 1,
-      task: 'Write code.',
+      task: 'Created accessible, responsive, and functional user interfaces to allow visitors on any device to have the same user experience.',
+    },
+    {
+      id: 2,
+      task: 'Creatd the user experience that fetched, parsed, and formatted nalytice data and relayed it into React components.',
     }],
   }]);
 
   const [skills, setSkills] = useState([{
     id: 0,
-    skill: 'javascript, html, css',
+    skill: 'JavaScript',
   },
   {
     id: 1,
-  skill: 'Team player'  
+    skill: 'HTML'  
+  },
+  {
+    id: 2,
+    skill: 'CSS'  
+  },
+  {
+    id: 3,
+    skill: 'React.js'  
   }]);
 
   const [activeIndex, setActiveIndex] = useState(0);
