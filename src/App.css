@@ -1,42 +1,105 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+main {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  background-color: wheat;
+}
+
+.inActive {
+  display: flex;
+}
+
+.section-container {
+  background-color: #2C3930;
+  padding: 2rem 2rem 2rem 4rem;
+  max-width: 600px;
+}
+
+.form-container {
+  width: 400px;
+  max-height: 600px;
+  background-color: #FF9D23;
   padding: 2rem;
-  text-align: center;
+  margin-bottom: 1.2rem;
+  overflow: auto;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.form-block {
+  margin-bottom: 0.4rem;
+  padding: 1.2rem;
+  background-color: #ffb459;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.form-block > div {
+  padding-bottom: 0.8rem;
+}
+
+label, input {
+  display: block;
+}
+
+input {
+  width: 100%;
+  height: 1.4rem;
+  border-style: none;
+}
+
+.resp-form,
+.skill-form,
+.notes-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cv-container {
+  max-width: 680px;
+  border: 2px solid black;
+  margin: 2rem 6rem 2rem 2rem;
+  background-color: whitesmoke;
+}
+
+.cv-container>div {
+  width: 600px;
+  padding: 25px 25px 25px 25px;
+}
+
+.info-block {
+  padding-top: 0.6rem;
+}
+
+.info-block > div,
+li {
+  padding-bottom: 0.2rem;
+}
+
+.block-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1200px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .section-container {
+    padding: 2rem;
+    max-width: auto;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .form-container {
+    width: auto;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .cv-container {
+    margin: 2rem;
+    max-width: auto;
+  }
 
-.read-the-docs {
-  color: #888;
+  .cv-container > div {
+    width: auto;
+  }
 }
