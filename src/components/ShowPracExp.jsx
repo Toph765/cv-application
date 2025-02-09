@@ -6,7 +6,7 @@ function ShowPracExp({ data }) {
             <div>
                 {data && data.map(item => {
                     return (
-                        <div key={item.id}>
+                        <div key={item.id} className="info-block">
                             <div className="block-title">
                                 <h4>{item.companyName}</h4>
                                 <i>{format(item.from, "MMM yyyy")} - {format(item.to, "MMM yyyy")}</i>

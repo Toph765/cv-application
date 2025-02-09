@@ -1,7 +1,7 @@
 function ShowSkills({data}) {
     return (
         <>
-            <div>
+            <div className="info-block">
                 <ul>
                     {data && (data.map(item => {
                         return (<li key={item.id}>{item.skill}</li>)
