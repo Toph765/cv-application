@@ -13,7 +13,7 @@ function PracExp({callback, isActive, onShow}) {
     },
     {
       id: 1,
-      task: 'Created accessible, responsive, and functional user interfaces to allow visitors on any device to hace the same user experience.',
+      task: 'Created accessible, responsive, and functional user interfaces to allow visitors on any device to have the same user experience.',
     },
     {
       id: 2,
