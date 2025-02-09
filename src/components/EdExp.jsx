@@ -129,22 +129,22 @@ function EdExp({callback, isActive, onShow}) {
                               <input type="text" name="text"
                                 value={item.text}
                                 onChange={e => handleAchInputChange(e, item.id, exp.id)} />
-                              <button onClick={(e) => handleAchRemoveBtn(e, item.id, exp.id)}>x</button>
+                              <button onClick={(e) => handleAchRemoveBtn(e, item.id, exp.id)} className="red">x</button>
                             </div>
                           </div>
                         )
                       })}
-                    <button onClick={(e) => handleAddInput(e, exp.id)}>+</button>
+                    <button onClick={(e) => handleAddInput(e, exp.id)} className="green">+</button>
                 </div>
-                {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
+                {edExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)} className="red">remove</button>)}
               </div>
               )
             })}
-            <button onClick={handleAddbtn}>Add</button>
-            <button onClick={grabData}>Save</button>
+            <button onClick={handleAddbtn} className="green">Add</button>
+            <button onClick={grabData} className="green">Save</button>
           </form> 
         ) : (
-            <button onClick={onShow}>Show</button>
+            <button onClick={onShow} className="green">Show</button>
         )}
       </div>
     </>

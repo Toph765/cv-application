@@ -65,16 +65,16 @@ function Skill({callback, isActive, onShow}) {
                             name="skill"
                             type="text"
                             onChange={(e) => handleInputChange(e, item.id)} />
-                        {skills.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, item.id)}>X</button>)}
+                        {skills.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, item.id)} className="red">X</button>)}
                       </div>
                     </div>
                   )})}
-              <button onClick={handleAddBtn}>add</button>
-              <button onClick={grabData}>Save</button>        
+              <button onClick={handleAddBtn} className="green">add</button>
+              <button onClick={grabData} className="green">Save</button>        
             </div>
           </form>
         ) : (
-            <button onClick={onShow}>Show</button>
+            <button onClick={onShow} className="green">Show</button>
         )}
       </div>
     </>

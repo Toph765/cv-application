@@ -43,10 +43,10 @@ function GenInfo({ callback, isActive, onShow }) {
                 <input name="phone"  value={genInfo.phone} type="telephone" onChange={e => setgenInfo({ ...genInfo, phone: e.target.value })} />
               </label>
             </div>
-            <button onClick={grabData}>Save</button>  
+            <button onClick={grabData} className="green">Save</button>  
           </form>
           ) : (
-            <button onClick={onShow}>Show</button>
+            <button onClick={onShow} className="green">Show</button>
           )}
         </div>  
       </>

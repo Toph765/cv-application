@@ -136,21 +136,21 @@ function PracExp({callback, isActive, onShow}) {
                             <input type="text" name="task"
                               value={duty.task}
                               onChange={e => handleInputChange(e, duty.id, exp.id)} />
-                            <button onClick={(e) => handleRespRemoveBtn(e, duty.id, exp.id)}>x</button>
+                            <button onClick={(e) => handleRespRemoveBtn(e, duty.id, exp.id)} className="red">x</button>
                           </div>
                         </div>
                       )})}
-                    <button onClick={(e) => handleAddInput(e, exp.id)}>+</button>
+                    <button onClick={(e) => handleAddInput(e, exp.id)} className="green">+</button>
                   </div>
-                  {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)}>remove</button>)}
+                  {pracExp.length > 1 && (<button onClick={(e) => handleRemoveBtn(e, exp.id)} className="red">remove</button>)}
                 </div>
               )
             })}
-            <button onClick={handleAddExp}>add</button>
-            <button onClick={grabData} type="submit">Save</button>
+            <button onClick={handleAddExp} className="green">add</button>
+            <button onClick={grabData} type="submit" className="green">Save</button>
             </form>  
           ) : (
-              <button onClick={onShow}>Show</button>
+              <button onClick={onShow} className="green">Show</button>
           )} 
         </div>   
       </>
